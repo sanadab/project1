@@ -9,9 +9,9 @@ const app = express()
 app.use(bodyParser.json())
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({
-        extended: true
-    }))
-    // ?retryWrites=true&w=majority
+    extended: true
+}))
+
 mongoose.connect('mongodb+srv://sanadab7:PasswordPassword@cluster0.qxmzvmg.mongodb.net/users', {
     useNewUrLParser: true,
     useUnifiedTopoLogy: true
@@ -31,11 +31,13 @@ app.get("/", (req, res) => {
 
 app.post("/Log-in", (req, res) => {
     var check = db.collection('User').findOne();
-    console.log(check.password);
+    // console.log(User.password);
     console.log(req.body.password);
-    if (check.password === req.body.password) {
+    if (req.body.password) {
+        // console.log(check.password);
         res.redirect("/Home.html")
     } else {
+
         res.send("Wrong Password")
     }
 });
@@ -69,7 +71,7 @@ app.post("/Sign-Up", (req, res) => {
         console.log("Record Inserted Successfuly");
     });
 
-    return res.redirect('Home.html')
+    return res.redirect('Log-in.html')
 
 })
 
@@ -83,7 +85,7 @@ app.get("/", (req, res) => {
         "Allow-access-Allow-Origin": '*'
     })
 
-    return res.redirect('/Home.html');
+    return res.redirect('Home');
 
 }).listen(5000);
 

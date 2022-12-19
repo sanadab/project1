@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     <script defer src="https://use.fontawesome.com/releases/v6.2.1/js/all.js"></script>
     <title>Admin Register</title>
 </head>
+
 <body>
     <nav class="navbar">
         <div class="navlinks">
@@ -18,28 +20,29 @@
         </div>
     </nav>
 
-<div class="login-block">
-    <h1><i> Sign Up As Admin</i></h1>
-    <form action="/Sign-Up" method="POST">
-        <select name="gender" id="id">
+    <div class="login-block">
+        <h1><i> Sign Up As Admin</i></h1>
+        <form action="/Sign-Up" method="POST">
+            <select name="gender" id="id">
             <option value="Male">Male</option>
             <option value="Female">Female</option>
         </select>
-    <input name="_id" type="text"  placeholder="ID" maxlength="9"/>
-    <input name="Fname" type="text"  placeholder="First Name" />
-    <input name="Lname" type="text"  placeholder="Last Name"/>
-    <input name="phno" type="tel"  placeholder="Phone" maxlength="10"/>
-    <input name="password" type="password"  placeholder="Password" id="passw" minlength="8" maxlength="15"/>
-    <input name="email" type="email"  placeholder="Email"/>  
-    <button type="submit">Register</button>
+            <input name="_id" type="text" placeholder="ID" maxlength="9" />
+            <input name="Fname" type="text" placeholder="First Name" />
+            <input name="Lname" type="text" placeholder="Last Name" />
+            <input name="phno" type="tel" placeholder="Phone" maxlength="10" />
+            <input name="password" type="password" placeholder="Password" id="passw" minlength="8" maxlength="15" />
+            <input name="email" type="email" placeholder="Email" />
+            <button type="submit">Register</button>
 
-    <!--<input name="age" type="number"  placeholder="age"/
+            <!--<input name="age" type="number"  placeholder="age"/
      
     <input name="birthdate" type="date"  placeholder="age"/>
     !-->
 
 
-    </form>
-</div>
+        </form>
+    </div>
 </body>
+
 </html>

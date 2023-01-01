@@ -1,92 +1,151 @@
 var express = require("express")
 var bodyParser = require("body-parser")
 var mongoose = require("mongoose")
-const User = require("./User")
+const path = require('path');
+var passwordValidator = require('password-validator');
+const app = express();
+const ejs = require("ejs");
+var engines = require('consolidate');
 
-const app = express()
 
 
-app.use(bodyParser.json())
-app.use(express.static('public'))
+
+
+
+app.set('view engine', 'ejs');
+app.use(express.static('views'));
+app.set('views', __dirname + '/views');
+app.engine('html', engines.mustache);
 app.use(bodyParser.urlencoded({
     extended: true
-}))
-
-mongoose.connect('mongodb+srv://sanadab7:PasswordPassword@cluster0.qxmzvmg.mongodb.net/users', {
-    useNewUrLParser: true,
-    useUnifiedTopoLogy: true
-
-});
+}));
 
 
-var db = mongoose.connection;
 
-db.on('error', () => console.log("Error in connecting to database"));
-db.once('open', () => console.log("Connected to Databases"))
+const User = require('./Database/DBs/User.js').User
+
+
+
 
 app.get("/", (req, res) => {
-    res.render("login")
+    res.render("Home.html")
 
 })
+app.get('/Sign-Up', function(req, res) {
+    res.render('Sign-Up.html');
+});
 
-app.post("/Log-in", (req, res) => {
-    var check = db.collection('User').findOne();
-    // console.log(User.password);
-    console.log(req.body.password);
-    if (req.body.password) {
-        // console.log(check.password);
-        res.redirect("/Home.html")
-    } else {
+app.get('/Log-in', function(req, res) {
+    res.render('Log-in.html');
+});
+app.get('/profile', function(req, res) {
+    res.render('profile.html');
+});
 
-        res.send("Wrong Password")
+app.post('/Log-In', (req, res) => {
+
+    try {
+        var password = req.body.Password;
+        User.findOne({
+            id: req.body.id,
+
+        }, function(err, user) {
+            if (err) { // user doesn't exist
+                res.json({
+                    error: err
+                })
+            }
+            if (user) { //user exist
+
+
+
+                if (req.body.password === user.password) {
+                    console.log(user);
+                    LoggedInUser = user.FirstName;
+                    console.log("\n inside the login\n");
+
+                    return res.redirect("/profile");
+                    // req.session.user = user;
+
+
+                } else {
+                    return res.redirect("/Log-in");
+                }
+            } else {
+                return res.redirect("/Log-in");
+            }
+        });
+    } catch {
+        return res.redirect(500, "/Log-in");
+
     }
 });
 
+var passwordschema = new passwordValidator();
+
+passwordschema
+    .is().max(15)
+    .is().min(7)
+    .has().uppercase()
+    .has().not().spaces()
+    .has().digits(2);
 app.post("/Sign-Up", (req, res) => {
-    var _id = req.body._id;
-    var Fname = req.body.Fname;
-    var Lname = req.body.Lname;
-    var email = req.body.email;
-    var phno = req.body.phno;
-    var password = req.body.password;
 
-
-    var data = {
-        "_id": _id,
-        "Fname": Fname,
-        "Lname": Lname,
-        "email": email,
-        "phno": phno,
-        "password": password
-    }
-
-
-
-
-
-    db.collection('users').insertOne(data, (err, collection) => {
-        if (err) {
-            throw err;
-        }
-        console.log("Record Inserted Successfuly");
-    });
-
-    return res.redirect('Log-in.html')
-
-})
-
-
-
-//const collection = new mongoose.model("collection",userSchema)
-
-//module.exports=collection
-app.get("/", (req, res) => {
-    res.set({
-        "Allow-access-Allow-Origin": '*'
+    let users = new User({
+        Firstname: req.body.Firstname,
+        Lastname: req.body.Lastname,
+        id: req.body.id,
+        password: req.body.password,
+        email: req.body.email,
+        Gender: req.body.Gender,
+        Age: req.body.Age,
+        Phone: req.body.Phone,
+        Birthdate: req.body.Birthdate
     })
 
-    return res.redirect('Home');
+    console.log(users);
+    console.log(req.body.id);
+    User.findOne({
+        id: req.body.id,
 
-}).listen(5000);
+    }, function(err, user) {
+        if (err) {
 
-console.log("Listening on PORT 5000");
+            res.json({
+                error: err
+            })
+        }
+        console.log(user);
+        if (!user) {
+
+            if (passwordschema.validate(req.body.password)) {
+
+                users.save(function(err) {
+                    if (!err) {
+
+                        //console.log(user);
+                        console.log("sign up succesfuly");
+                        return res.redirect('/Log-in');
+                    }
+                });
+
+
+
+            } else {
+
+                console.log("sign up not succesfuly");
+                return res.redirect("/Sign-Up");
+            };
+
+        } else {
+            console.log("the user is already exist!");
+            return res.redirect("/Sign-Up");
+        }
+    });
+
+
+});
+
+
+
+module.exports = app;

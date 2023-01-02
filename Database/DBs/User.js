@@ -13,5 +13,5 @@ const regSchema = new mongoose.Schema({
     Birthdate: Date,
 
 });
-const User = mongoose.model("Users", regSchema);
+const User = mongoose.model("users", regSchema);
 module.exports = { User };

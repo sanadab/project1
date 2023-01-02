@@ -6,6 +6,7 @@ var passwordValidator = require('password-validator');
 const app = express();
 const ejs = require("ejs");
 var engines = require('consolidate');
+const { send } = require("process");
 
 
 
@@ -38,14 +39,30 @@ app.get('/Sign-Up', function(req, res) {
 app.get('/Log-in', function(req, res) {
     res.render('Log-in.html');
 });
+
 app.get('/profile', function(req, res) {
-    res.render('profile.html');
+    res.render('profile.ejs');
+});
+// app.get('/Employees', function(req, res) {
+//     res.render('Employees.ejs');
+// });
+app.get('/Employees', function(req, res) {
+    User.find({}, function(err, users) {
+        // console.log("asd");
+        console.log(users);
+        res.render('Employees.ejs', {
+
+            p: users
+
+        });
+
+    });
 });
 
 app.post('/Log-In', (req, res) => {
 
     try {
-        var password = req.body.Password;
+
         User.findOne({
             id: req.body.id,
 
@@ -61,7 +78,6 @@ app.post('/Log-In', (req, res) => {
 
                 if (req.body.password === user.password) {
                     console.log(user);
-                    LoggedInUser = user.FirstName;
                     console.log("\n inside the login\n");
 
                     return res.redirect("/profile");
@@ -80,7 +96,7 @@ app.post('/Log-In', (req, res) => {
 
     }
 });
-
+// settings for password
 var passwordschema = new passwordValidator();
 
 passwordschema
@@ -146,6 +162,13 @@ app.post("/Sign-Up", (req, res) => {
 
 });
 
+
+
+// app.get('/logout', function(req, res) {
+//     req.session.destroy(function(err) {
+//         res.redirect('/Log-in.html');
+//     });
+// });
 
 
 module.exports = app;

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+
+
+    <table id="PatientqueueTable" class="container">
+
+
+        <thead>
+            <tr>
+                <th>
+                    <h1>First Name</h1>
+                </th>
+                <th>
+                    <h1>Last Name</h1>
+                </th>
+                <th>
+                    <h1>ID</h1>
+                </th>
+                <th>
+                    <h1>E-mail</h1>
+                </th>
+                <th>
+                    <h1>Gender</h1>
+                </th>
+                <th>
+                    <h1>Age</h1>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <%p.forEach(user=>{ %>
+                <tr>
+                    <td>
+                        <p>
+                            <%= user.Firstname %>
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            <%= user.Lastname %>
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            <%= user.id %>
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            <%= user.email%>
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            <%= user.Gender%>
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            <%= user.Age %>
+                        </p>
+                    </td>
+                </tr>
+                <%})%>
+                    <!-- <td><button class="openForm">View Profile</button></td> -->
+                    <!-- <form action="/DeleteAppoitment" method="post">
+                    <div class="w3-section" hidden="true">
+                        <input hidden="true" class="w3-input w3-border" type="number" name="sender" required>
+                    </div>
+                    <div class="w3-section" hidden="true">
+                        <input hidden="ture" class="w3-input w3-border" type="number" name="doctordel" required>
+                    </div>
+                    <td><button type="submit"> Done</button></td>
+                
+                </form> -->
+
+
+        </tbody>
+    </table>
+</body>
+
+</html>

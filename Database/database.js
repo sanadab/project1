@@ -7,7 +7,7 @@ const DB_URI = process.env.MONGODB_URL || 'mongodb+srv://sanadab7:PasswordPasswo
 function connect() {
     return new Promise((resolve, reject) => {
 
-        if (process.env.NODE_ENV === 'test') {
+        if (process.env.NODE_ENV === 'DB') {
             const Mockgoose = require('mockgoose').Mockgoose;
             const mockgoose = new Mockgoose(mongoose);
 

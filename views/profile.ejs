@@ -62,10 +62,23 @@
         </div>
         <br>
         </div>
-        <a href="Home.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Log-Out</a>
+        <a href="Log-out" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Log-Out</a>
+        <!-- <button id="logout-button">Logout</button>
+
+        <script>
+            $('#logout-button').click(function() {
+                $.ajax({
+                    url: '/Log-out',
+                    method: 'DELETE',
+                    success: function() {
+                        window.location.replace('/Log-in');
+                    }
+                });
+            });
+        </script> -->
+
         </div>
-        <!-- <li><a class="dropdown-item" href="Sign-Up-Customer.html">Sign-Up-Customer</a></li>
-                    <li><a class="dropdown-item" href="Sign-Up-Service.html">Sign-Up-Service Representative</a></li> -->
+
         </ul>
 
     </nav>

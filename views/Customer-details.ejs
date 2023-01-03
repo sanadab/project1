@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Employees</title>
+    <title>Customer-details</title>
     <style>
         table {
             border-collapse: collapse;
@@ -20,13 +20,28 @@
         }
         
         th {
-            background-color: #e15122;
+            background-color: rgb(97, 180, 8);
             color: white;
         }
     </style>
+    <link rel="icon" href="images/favicon.ico">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Employees.css">
+
 </head>
 
 <body>
+
+    <nav class="navbar">
+        <div class="navlinks">
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="profile">Admin Profile</a></li>
+            </ul>
+        </div>
+    </nav>
 
 
     <table id="PatientqueueTable" class="container">
@@ -49,6 +64,13 @@
                 <th>
                     <h1>Phone</h1>
                 </th>
+                <th>
+                    <h1></h1>
+                </th>
+                <th>
+                    <h1></h1>
+                </th>
+
 
             </tr>
         </thead>
@@ -80,9 +102,46 @@
                             <%= user.Phone%>
                         </p>
                     </td>
+                    <td>
+                        <p>
+                            <button id="delete-button">Block</button>
+
+                            <script>
+                                const button = document.querySelector('#delete-button');
+
+                                button.addEventListener('click', async() => {
+                                    const db = client.db('test');
+                                    const collection = db.collection('users');
+
+                                    await collection.deleteone({
+                                        FirstName: 'abed',
+                                        id: '19'
+                                    });
+
+                                    client.close();
+                                });
+                            </script>
+
+
+
+                        </p>
+
+                    </td>
+                    <td>
+
+                        <p>
+                            <a href="mailto: <%= user.email%>?<%= user.email%>&<%= user.email%>&subject=You are experiencing problems with your account. Please contact us. Thank you&body=Message Body">
+                                <button>Warning</button>
+                            </a>
+
+
+                        </p>
+                    </td>
+
 
                 </tr>
                 <%})%>
+
 
         </tbody>
     </table>

@@ -7,6 +7,9 @@ const app = express();
 const ejs = require("ejs");
 var engines = require('consolidate');
 const { send } = require("process");
+// const destroy = object ? .destroy;
+
+
 
 
 
@@ -43,9 +46,7 @@ app.get('/Log-in', function(req, res) {
 app.get('/profile', function(req, res) {
     res.render('profile.ejs');
 });
-// app.get('/Employees', function(req, res) {
-//     res.render('Employees.ejs');
-// });
+
 app.get('/Employees', function(req, res) {
     User.find({}, function(err, users) {
         // console.log("asd");
@@ -175,11 +176,15 @@ app.post("/Sign-Up", (req, res) => {
 
 
 
-// app.get('/logout', function(req, res) {
+// app.delete('/Log-out', function(req, res) {
 //     req.session.destroy(function(err) {
 //         res.redirect('/Log-in.html');
 //     });
 // });
+app.get('/Log-out', (req, res) => {
+    req.session.destroy();
+    res.redirect('/Log-in');
+});
 
 
 module.exports = app;

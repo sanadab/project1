@@ -58,7 +58,18 @@ app.get('/Employees', function(req, res) {
 
     });
 });
+app.get('/Customer-details', function(req, res) {
+    User.find({}, function(err, users) {
+        // console.log("asd");
+        console.log(users);
+        res.render('Customer-details.ejs', {
 
+            p: users
+
+        });
+
+    });
+});
 app.post('/Log-In', (req, res) => {
 
     try {
@@ -108,8 +119,8 @@ passwordschema
 app.post("/Sign-Up", (req, res) => {
 
     let users = new User({
-        Firstname: req.body.Firstname,
-        Lastname: req.body.Lastname,
+        FirstName: req.body.FirstName,
+        LastName: req.body.LastName,
         id: req.body.id,
         password: req.body.password,
         email: req.body.email,

@@ -8,7 +8,7 @@ const regSchema = new mongoose.Schema({
     password: String,
     email: String,
     Gender: String,
-    Age: Number,
+    Age: String,
     Phone: Number,
     Roll:String,
     Birthdate: Date,

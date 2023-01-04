@@ -46,6 +46,10 @@ app.get('/Log-in', function(req, res) {
 app.get('/profile', function(req, res) {
     res.render('profile.ejs');
 });
+app.get('/profile-cos', function(req, res) {
+    res.render('profile-cos.html');
+});
+
 
 app.get('/Employees', function(req, res) {
     User.find({}, function(err, users) {
@@ -111,6 +115,14 @@ app.post('/Log-In', (req, res) => {
                     if (user.Roll === 'Admin') {
                         return res.redirect("/profile");
                     }
+
+
+                    if (user.Roll === 'customer') {
+                        return res.redirect("/profile-cos");
+                    }
+                    // req.session.user = user;
+
+
 
                 } else {
                     return res.redirect("/Log-in");

@@ -7,12 +7,6 @@ const app = express();
 const ejs = require("ejs");
 var engines = require('consolidate');
 const { send } = require("process");
-// const destroy = object ? .destroy;
-
-
-
-
-
 
 
 
@@ -27,7 +21,7 @@ app.use(bodyParser.urlencoded({
 
 
 const User = require('./Database/DBs/User.js').User
-
+// const Request= require('./Database/DBs/Request.js').Request
 
 
 
@@ -46,22 +40,23 @@ app.get('/Log-in', function(req, res) {
 app.get('/profile', function(req, res) {
     res.render('profile.ejs');
 });
+
 app.get('/profile-cos', function(req, res) {
     res.render('profile-cos.html');
 });
 
+app.get('/Profile-Service1', function(req, res) {
+    res.render('Profile-Service1.ejs');
+});
+// app.get('/Customer-Donation-Request', function(req, res) {
+//     res.render('Customer-Donation-Request.html');
+// });
 
 app.get('/Employees', function(req, res) {
     User.find({}, function(err, users) {
-
         res.render('Employees.ejs', {
-
-
             p: users
-
         });
-
-
     });
 });
 
@@ -70,25 +65,22 @@ app.get('/Customer-details', function(req, res) {
         // console.log("asd");
         console.log(users);
         res.render('Customer-details.ejs', {
-
             p: users
-
         });
-
     });
 });
-// app.get('/profile', function(req, res) {
+
+// app.get('/Profile-Service1', function(req, res) {
 //     User.find({}, function(err, users) {
-//         // console.log("asd");
-//         console.log(users);
-//         res.render('profile.ejs', {
+        
+//         res.render('Profile-Service1.ejs', {
 
-//             p: users
-
+//             s: users
 //         });
 
 //     });
 // });
+
 app.post('/Log-In', (req, res) => {
 
     try {
@@ -109,6 +101,7 @@ app.post('/Log-In', (req, res) => {
                 if (req.body.password === user.password) {
                     console.log(user);
                     console.log("\n inside the login\n");
+                    console.log(req.body);
                     if (user.Roll === 'Employee') {
                         return res.redirect("/Home.html");
                     }
@@ -121,7 +114,7 @@ app.post('/Log-In', (req, res) => {
                         return res.redirect("/profile-cos");
                     }
                     // req.session.user = user;
-
+                    console.log("asas");
 
 
                 } else {
@@ -174,26 +167,17 @@ app.post("/Sign-Up", (req, res) => {
         }
         console.log(user);
         if (!user) {
-
             if (passwordschema.validate(req.body.password)) {
-
                 users.save(function(err) {
                     if (!err) {
-
-                        //console.log(user);
                         console.log("sign up succesfuly");
                         return res.redirect('/Log-in');
                     }
                 });
-
-
-
             } else {
-
                 console.log("sign up not succesfuly");
                 return res.redirect("/Sign-Up");
             };
-
         } else {
             console.log("the user is already exist!");
             return res.redirect("/Sign-Up");
@@ -202,7 +186,39 @@ app.post("/Sign-Up", (req, res) => {
 
 
 });
-
+// app.post('/Customer-Donation-Request', (req, res) => {
+//     const Name = req.body.FirstName;
+//     const Email = req.body.email;
+//     const Request = req.body.Request;
+//   console.log("asd ");
+//     const client = new MongoClient(uri, { useNewUrlParser: true });
+//     client.connect(err => {
+//       const collection = client.db("DB").collection("Request");
+//     //   console.log("asd");
+//       collection.insertOne({ Name: FirstName, Email: email, Request: Request }, function(err, res) {
+//         console.log("Request saved to database");
+//         client.close();
+//       });
+//     });
+//   });
+// app.post('/Customer-Donation-Request', (req, res) => {
+//     // Create a new instance of the Request model
+//     const Request = new Request({
+//       Firstname: req.body.Firstname,
+//       Email: req.body.Email,
+//       Request: req.body.Request
+//     });
+//     // Save the customer request to the database
+//     request.save((error) => {
+//       if (error) {
+//         // If there is an error, send a response with a status code of 500
+//         res.sendStatus(500);
+//       } else {
+//         // If the request was saved successfully, send a response with a status code of 200
+//         res.sendStatus(200);
+//       }
+//     });
+//   });
 
 
 // app.delete('/Log-out', function(req, res) {

@@ -91,8 +91,9 @@ app.post('/Log-In', (req, res) => {
                 if (req.body.password === user.password) {
                     console.log(user);
                     console.log("\n inside the login\n");
-
-                    return res.redirect("/profile");
+                    if(user.Roll==='Employee'){
+                    return res.redirect("/Home.html");
+                    }
                     // req.session.user = user;
 
 
@@ -128,6 +129,7 @@ app.post("/Sign-Up", (req, res) => {
         Gender: req.body.Gender,
         Age: req.body.Age,
         Phone: req.body.Phone,
+        Roll:req.body.Roll,
         Birthdate: req.body.Birthdate
     })
 

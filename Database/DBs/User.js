@@ -10,6 +10,7 @@ const regSchema = new mongoose.Schema({
     Gender: String,
     Age: Number,
     Phone: Number,
+    Roll:String,
     Birthdate: Date,
 
 });

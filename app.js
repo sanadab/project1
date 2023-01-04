@@ -49,16 +49,18 @@ app.get('/profile', function(req, res) {
 
 app.get('/Employees', function(req, res) {
     User.find({}, function(err, users) {
-        // console.log("asd");
-        console.log(users);
+
         res.render('Employees.ejs', {
+
 
             p: users
 
         });
 
+
     });
 });
+
 app.get('/Customer-details', function(req, res) {
     User.find({}, function(err, users) {
         // console.log("asd");
@@ -71,6 +73,18 @@ app.get('/Customer-details', function(req, res) {
 
     });
 });
+// app.get('/profile', function(req, res) {
+//     User.find({}, function(err, users) {
+//         // console.log("asd");
+//         console.log(users);
+//         res.render('profile.ejs', {
+
+//             p: users
+
+//         });
+
+//     });
+// });
 app.post('/Log-In', (req, res) => {
 
     try {
@@ -91,11 +105,12 @@ app.post('/Log-In', (req, res) => {
                 if (req.body.password === user.password) {
                     console.log(user);
                     console.log("\n inside the login\n");
-                    if(user.Roll==='Employee'){
-                    return res.redirect("/Home.html");
+                    if (user.Roll === 'Employee') {
+                        return res.redirect("/Home.html");
                     }
-                    // req.session.user = user;
-
+                    if (user.Roll === 'Admin') {
+                        return res.redirect("/profile");
+                    }
 
                 } else {
                     return res.redirect("/Log-in");
@@ -129,7 +144,7 @@ app.post("/Sign-Up", (req, res) => {
         Gender: req.body.Gender,
         Age: req.body.Age,
         Phone: req.body.Phone,
-        Roll:req.body.Roll,
+        Roll: req.body.Roll,
         Birthdate: req.body.Birthdate
     })
 

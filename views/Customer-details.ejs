@@ -76,71 +76,73 @@
         </thead>
         <tbody>
             <%p.forEach(user=>{ %>
-                <tr>
-                    <td>
-                        <p>
-                            <%= user.FirstName %>
-                        </p>
-                    </td>
-                    <td>
-                        <p>
-                            <%= user.LastName %>
-                        </p>
-                    </td>
-                    <td>
-                        <p>
-                            <%= user.id %>
-                        </p>
-                    </td>
-                    <td>
-                        <p>
-                            <%= user.email%>
-                        </p>
-                    </td>
-                    <td>
-                        <p>
-                            <%= user.Phone%>
-                        </p>
-                    </td>
-                    <td>
-                        <p>
-                            <button id="delete-button">Block</button>
+                <% if(user.Roll==='customer'){%>
+                    <tr>
+                        <td>
+                            <p>
+                                <%= user.FirstName %>
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                <%= user.LastName %>
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                <%= user.id %>
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                <%= user.email%>
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                <%= user.Phone%>
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                <button id="delete-button">Block</button>
 
-                            <script>
-                                const button = document.querySelector('#delete-button');
+                                <script>
+                                    const button = document.querySelector('#delete-button');
 
-                                button.addEventListener('click', async() => {
-                                    const db = client.db('test');
-                                    const collection = db.collection('users');
+                                    button.addEventListener('click', async() => {
+                                        const db = client.db('test');
+                                        const collection = db.collection('users');
 
-                                    await collection.deleteone({
-                                        FirstName: 'abed',
-                                        id: '19'
+                                        await collection.deleteone({
+                                            FirstName: 'abed',
+                                            id: '19'
+                                        });
+
+                                        client.close();
                                     });
-
-                                    client.close();
-                                });
-                            </script>
+                                </script>
 
 
 
-                        </p>
+                            </p>
 
-                    </td>
-                    <td>
+                        </td>
+                        <td>
 
-                        <p>
-                            <a href="mailto: <%= user.email%>?<%= user.email%>&<%= user.email%>&subject=You are experiencing problems with your account. Please contact us. Thank you&body=Message Body">
-                                <button>Warning</button>
-                            </a>
-
-
-                        </p>
-                    </td>
+                            <p>
+                                <a href="mailto: <%= user.email%>?<%= user.email%>&<%= user.email%>&subject=You are experiencing problems with your account. Please contact us. Thank you&body=Message Body">
+                                    <button>Warning</button>
+                                </a>
 
 
-                </tr>
-                <%})%>
+                            </p>
+                        </td>
+
+
+                    </tr>
+                    <%}%>
+                        <%})%>
 
 
         </tbody>

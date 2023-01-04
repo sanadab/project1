@@ -51,7 +51,7 @@
         <div class="w3-bar-block">
             <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Admin</a>
             <a href="#Welcome" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Welcome</a>
-            <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
+            <a href="#Opening Hours" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Opening Hours</a>
 
         </div>
         <a href="Employees " onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Employees</a>
@@ -63,19 +63,7 @@
         <br>
         </div>
         <a href="Log-out" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Log-Out</a>
-        <!-- <button id="logout-button">Logout</button>
 
-        <script>
-            $('#logout-button').click(function() {
-                $.ajax({
-                    url: '/Log-out',
-                    method: 'DELETE',
-                    success: function() {
-                        window.location.replace('/Log-in');
-                    }
-                });
-            });
-        </script> -->
 
         </div>
 
@@ -98,10 +86,49 @@
 
         <!-- Contact -->
         <div class="w3-container" id="contact" style="margin-top:75px">
-            <h1 class="w3-xxxlarge w3-text-red"><b>Contact.</b></h1>
+            <h1 class="w3-xxxlarge w3-text-red"><b>Opening Hours</b></h1>
             <hr style="width:50px;border:5px solid blue" class="w3-round">
+            <style>
+                table,
+                td,
+                th {
+                    border: 1px solid black;
+                    border-collapse: collapse;
+                }
+                
+                td,
+                th {
+                    padding: 20px;
+                }
+            </style>
 
-            <form action="/action_page.php" target="_blank">
+            <table>
+                <tr>
+                    <th>Day</th>
+                    <th>Hours</th>
+                </tr>
+                <tr>
+                    <td>Sunday</td>
+                    <td>08:00-12:00</td>
+                </tr>
+                <tr>
+                    <td>Monday</td>
+                    <td>08:00-12:00</td>
+                </tr>
+                <tr>
+                    <td>Tusday</td>
+                    <td>08:00-12:00</td>
+                </tr>
+                <tr>
+                    <td>Saturday</td>
+                    <td>08:00-12:00</td>
+                </tr>
+                <tr>
+                    <td>Thursday</td>
+                    <td>08:00-12:00</td>
+                </tr>
+            </table>
+            <!-- <form action="/action_page.php" target="_blank">
                 <div class="w3-section">
                     <label>Name</label>
                     <input class="w3-input w3-border" type="text" name="Name" required>
@@ -116,7 +143,7 @@
                 </div>
                 <button type="submit" class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">Send
                     Message</button>
-            </form>
+            </form> -->
 
             </form>
         </div>

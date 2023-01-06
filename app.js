@@ -50,6 +50,12 @@ app.get('/Employees', function(req, res) {
     });
 });
 
+app.get('/reset-password', function(request,response)
+{
+    response.render("./reset-password/reset-password.html")
+
+});
+
 app.get('/Customer-details', function(req, res) {
     User.find({}, function(err, users) {
         // console.log("asd");

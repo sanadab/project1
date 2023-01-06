@@ -23,5 +23,4 @@ app.get("/reset-password-be", async (request, response) => {
     }
 })
 
-
 module.exports = app;

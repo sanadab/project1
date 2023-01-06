@@ -2,12 +2,15 @@ var express = require("express")
 var bodyParser = require("body-parser")
 var mongoose = require("mongoose")
 const path = require('path');
+const cors = require("cors");
 var passwordValidator = require('password-validator');
 const app = express();
+
 const ejs = require("ejs");
 var engines = require('consolidate');
 const { send } = require("process");
-
+const passwordController = require("./controllers/reset-password");
+app.use(cors());
 app.set('view engine', 'ejs');
 app.use(express.static('views'));
 app.set('views', __dirname + '/views');
@@ -15,7 +18,7 @@ app.engine('html', engines.mustache);
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-
+app.use("/", passwordController);
 const User = require('./Database/DBs/User.js').User
 
 app.get("/", (req, res) => {

@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 const DB_URI = process.env.MONGODB_URL || "mongodb+srv://sanadab7:PasswordPassword@cluster0.qxmzvmg.mongodb.net/?retryWrites=true&w=majority";
 
-
-
 function connect() {
     return new Promise((resolve, reject) => {
 

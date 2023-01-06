@@ -43,13 +43,15 @@ app.get('/Log-in', function(req, res) {
     res.render('Log-in.html');
 });
 
-app.get('/profile', function(req, res) {
-    res.render('profile.ejs');
-});
+// app.get('/profile', function(req, res) {
+//     res.render('profile.ejs');
+// });
 app.get('/profile-cos', function(req, res) {
     res.render('profile-cos.html');
 });
-
+// app.get('/Log-out', (req, res) => {
+//     res.render('/Log-out.html');
+// });
 
 app.get('/Employees', function(req, res) {
     User.find({}, function(err, users) {
@@ -77,18 +79,18 @@ app.get('/Customer-details', function(req, res) {
 
     });
 });
-// app.get('/profile', function(req, res) {
-//     User.find({}, function(err, users) {
-//         // console.log("asd");
-//         console.log(users);
-//         res.render('profile.ejs', {
+app.get('/profile', function(req, res) {
+    User.find({}, function(err, users) {
+        // console.log("asd");
+        console.log(users);
+        res.render('profile.ejs', {
 
-//             p: users
+            p: users
 
-//         });
+        });
 
-//     });
-// });
+    });
+});
 app.post('/Log-In', (req, res) => {
 
     try {
@@ -205,15 +207,9 @@ app.post("/Sign-Up", (req, res) => {
 
 
 
-// app.delete('/Log-out', function(req, res) {
-//     req.session.destroy(function(err) {
-//         res.redirect('/Log-in.html');
-//     });
-// });
-app.get('/Log-out', (req, res) => {
-    req.session.destroy();
-    res.redirect('/Log-in');
-});
+
+
+
 
 
 module.exports = app;

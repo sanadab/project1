@@ -64,6 +64,9 @@
                 <th>
                     <h1>Phone</h1>
                 </th>
+                <th>
+                    <h1></h1>
+                </th>
 
             </tr>
         </thead>
@@ -96,6 +99,16 @@
                         <td>
                             <p>
                                 <%= user.Phone%>
+                            </p>
+                        </td>
+                        <td>
+
+                            <p>
+                                <a href="mailto: <%= user.email%>?<%= user.email%>&<%= user.email%>&subject=&body=Message Body">
+                                    <button>message</button>
+                                </a>
+
+
                             </p>
                         </td>
 

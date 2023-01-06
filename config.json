@@ -1,0 +1,6 @@
+{
+    "mongodb":
+    {
+        "connectionString": "mongodb+srv://sanadab7:PasswordPassword@cluster0.qxmzvmg.mongodb.net/?retryWrites=true&w=majority"
+    }
+}

@@ -6,11 +6,10 @@ const path = require('path');
 var passwordValidator = require('password-validator');
 const app = express();
 
+
 const ejs = require("ejs");
 var engines = require('consolidate');
 const { send } = require("process");
-const passwordController = require("./controllers/reset-password");
-
 app.set('view engine', 'ejs');
 app.use(express.static('views'));
 app.set('views', __dirname + '/views');
@@ -36,10 +35,14 @@ app.get('/Log-in', function(req, res) {
 app.get('/profile', function(req, res) {
     res.render('profile.ejs');
 });
+
 app.get('/profile-cos', function(req, res) {
     res.render('profile-cos.html');
 });
 
+app.get('/Profile-Service1', function(req, res) {
+    res.render('Profile-Service1.ejs');
+});
 
 app.get('/Employees', function(req, res) {
     User.find({}, function(err, users) {
@@ -49,10 +52,6 @@ app.get('/Employees', function(req, res) {
     });
 });
 
-app.get('/reset-password', function(request, response) {
-    response.render("./reset-password/reset-password.html")
-
-});
 
 app.get('/Customer-details', function(req, res) {
     User.find({}, function(err, users) {
@@ -63,18 +62,7 @@ app.get('/Customer-details', function(req, res) {
         });
     });
 });
-// app.get('/profile', function(req, res) {
-//     User.find({}, function(err, users) {
-//         // console.log("asd");
-//         console.log(users);
-//         res.render('profile.ejs', {
 
-//             p: users
-
-//         });
-
-//     });
-// });
 app.post('/Log-In', (req, res) => {
     try {
         User.findOne({
@@ -169,17 +157,9 @@ app.post("/Sign-Up", (req, res) => {
     });
 });
 
-
-
-// app.delete('/Log-out', function(req, res) {
-//     req.session.destroy(function(err) {
-//         res.redirect('/Log-in.html');
-//     });
-// });
 app.get('/Log-out', (req, res) => {
     req.session.destroy();
     res.redirect('/Log-in');
 });
-
 
 module.exports = app;

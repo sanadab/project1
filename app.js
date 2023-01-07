@@ -17,7 +17,6 @@ app.engine('html', engines.mustache);
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-app.use("/", passwordController);
 const User = require('./Database/DBs/User.js').User
 
 app.get("/", (req, res) => {

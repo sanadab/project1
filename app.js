@@ -48,6 +48,10 @@ app.get('/Log-in', function(req, res) {
 app.get('/profile', function(req, res) {
     res.render('profile.ejs');
 });
+app.get('/Profile-Service1', function(req, res) {
+    res.render('Profile-Service1.html');
+});
+
 
 app.get('/Employees', function(req, res) {
     User.find({}, function(err, users) {
@@ -68,6 +72,18 @@ app.get('/Customer-details', function(req, res) {
         res.render('Customer-details.ejs', {
 
             p: users
+
+        });
+
+    });
+});
+app.get('/Customer-details-sr', function(req, res) {
+    User.find({}, function(err, users) {
+        // console.log("asd");
+        
+        res.render('Customer-details-sr.ejs', {
+
+            r: users
 
         });
 
@@ -94,7 +110,7 @@ app.post('/Log-In', (req, res) => {
                     console.log(user);
                     console.log("\n inside the login\n");
                     if(user.Roll==='Employee'){
-                    return res.redirect("/Home.html");
+                    return res.redirect("/Profile-Service1.html");
                     }
                     // req.session.user = user;
 

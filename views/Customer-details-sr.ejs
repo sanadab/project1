@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Employees</title>
+    <title>Customer-details-sr</title>
     <style>
         table {
             border-collapse: collapse;
@@ -38,7 +38,7 @@
         <div class="navlinks">
             <ul>
                 <li><a href="Home.html">Home</a></li>
-                <li><a href="profile">Admin Profile</a></li>
+                <li><a href="Profile-Service1.html">Service Profile</a></li>
             </ul>
         </div>
     </nav>
@@ -64,11 +64,22 @@
                 <th>
                     <h1>Phone</h1>
                 </th>
+                <th> 
+                    <h1>Volunteer hours</h1>
+                </th>
+                <th>
+                    <h1>Customer points</h1>
+                </th>
+                <th>
+                    <h1></h1>
+                </th>
+                
 
             </tr>
         </thead>
         <tbody>
-            <%p.forEach(user=>{ %>
+            <%r.forEach(user=>{ %>
+                <% if(user.Roll==='customer'){%>
                 <tr>
                     <td>
                         <p>
@@ -95,8 +106,26 @@
                             <%= user.Phone%>
                         </p>
                     </td>
+                    <td>
+                        <p>
+                            
+                        </p>
+                    </td>   <td>
+                        <p>
+                            
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            <a href="mailto: <%= user.email%>?<%= user.email%>&<%= user.email%>&subject=&body=Message Body"> 
+                                <button>message</button>
+                            </a>
+
+                        </p>
+                    </td>
 
                 </tr>
+                <%}%>
                 <%})%>
 
         </tbody>

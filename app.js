@@ -26,6 +26,9 @@ app.get("/", (req, res) => {
 app.get('/Sign-Up', function(req, res) {
     res.render('Sign-Up.html');
 });
+app.get('/Sign-Up-Service', function(req, res) {
+    res.render('Sign-Up-Service.html');
+});
 
 app.get('/Log-in', function(req, res) {
     res.render('Log-in.html');
@@ -34,10 +37,36 @@ app.get('/Log-in', function(req, res) {
 app.get('/profile', function(req, res) {
     res.render('profile.ejs');
 });
+app.get('/products', function(req, res) {
+    res.render('products.ejs');
+});
+app.get('/Profile-Service1', function(req, res) {
+    res.render('Profile-Service1.ejs');
+});
+
+app.get('/Customer-details-sr', function(req, res) {
+    User.find({}, function(err, users) {
+        res.render('Customer-details-sr.ejs', {
+            r: users
+        });
+    });
+});
+
+
+
+
 
 app.get('/Employees', function(req, res) {
     User.find({}, function(err, users) {
         res.render('Employees.ejs', {
+            p: users
+        });
+    });
+});
+
+app.get('/products', function(req, res) {
+    User.find({}, function(err, users) {
+        res.render('products.ejs', {
             p: users
         });
     });
@@ -53,6 +82,7 @@ app.get('/Customer-details', function(req, res) {
         });
     });
 });
+
 app.post('/Log-In', (req, res) => {
     try {
         User.findOne({
@@ -68,10 +98,10 @@ app.post('/Log-In', (req, res) => {
                     console.log(user);
                     console.log("\n inside the login\n");
                     if(user.Roll==='Employee'){
-                    return res.redirect("/Home.html");
+                    return res.redirect("/Profile-Service1");
                     }
                     if (user.Roll === 'Admin') {
-                        return res.redirect("/profile");
+                        return res.redirect("/profile");/////////////////////
                     }
                     if (user.Roll === 'customer') {
                         return res.redirect("/profile-cos");
@@ -136,8 +166,10 @@ app.post("/Sign-Up", (req, res) => {
                     }
                 });
             } else {
+                //if(user.Roll==='Employee'){
                 console.log("sign up not succesfuly");
                 return res.redirect("/Sign-Up");
+                //}
             };
         } else {
             console.log("the user is already exist!");
@@ -145,6 +177,23 @@ app.post("/Sign-Up", (req, res) => {
         }
     });
 });
+// app.post("/product", (req, res) => {
+
+//     let products = new User({
+//         pants:req.body.pants,
+//         coat:req.body.coat,
+//         shirt:req.body.shirt,
+//         shoes:req.body.shoes,
+//         chair:req.body.chair,
+//         table:req.body.table
+//     })
+//     products.save(function(err) {
+//         if (!err) {
+//             console.log("sign up succesfuly");
+//             return res.redirect('/product');
+//         }
+//     });
+// });
 
 app.get('/Log-out', (req, res) => {
     req.session.destroy();

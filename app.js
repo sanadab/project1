@@ -17,8 +17,10 @@ app.engine('html', engines.mustache);
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+const pro = require('./Database/DBs/products.js').pro
 const User = require('./Database/DBs/User.js').User
 const test = require('./Database/DBs/deat-seed.js').test
+
 
 app.get("/", (req, res) => {
     res.render("Home.html")
@@ -42,6 +44,10 @@ app.get('/profile-cos', function(req, res) {
 app.get('/volunteerdeat', function(req, res) {
     res.render('volunteerdeat.html');
 });
+app.get('/add-product', function(req, res) {
+    res.render('add-product.html');
+});
+
 
 
 app.get('/Employees', function(req, res) {
@@ -191,6 +197,29 @@ app.post("/volunteerdeat", (req, res) => {
     });
 
 
+    app.post("/add-product", (req, res) => {
+    
+        let product = new pro({
+            bants:req.body.bants,
+            coat: req.body.coat,
+            shirt:req.body.shirt,
+            shoes:req.body.shoes,
+            chair:req.body.chair,
+            table:req.body.table
+            
+         
+        })
+       
+                    product.save(function(err) {
+                        if (!err) {
+                            console.log(product);
+                            return res.redirect('/add-product');
+                        }
+                    });
+        });
+    
+    
+    
 
 
 module.exports = app;

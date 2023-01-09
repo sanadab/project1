@@ -17,7 +17,10 @@ app.engine('html', engines.mustache);
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+const pro = require('./Database/DBs/products.js').pro
 const User = require('./Database/DBs/User.js').User
+const test = require('./Database/DBs/deat-seed.js').test
+
 
 app.get("/", (req, res) => {
     res.render("Home.html")
@@ -37,23 +40,15 @@ app.get('/Log-in', function(req, res) {
 app.get('/profile', function(req, res) {
     res.render('profile.ejs');
 });
-// app.get('/products', function(req, res) {
-//     res.render('products.ejs');
-// });
 app.get('/Profile-Service1', function(req, res) {
     res.render('Profile-Service1.ejs');
 });
-
-app.get('/Customer-details-sr', function(req, res) {
-    User.find({}, function(err, users) {
-        res.render('Customer-details-sr.ejs', {
-            r: users
-        });
-    });
+app.get('/Profile-cos', function(req, res) {
+    res.render('Profile-cos.html');
 });
-
-
-
+app.get('/add-product', function(req, res) {
+    res.render('add-product.html');
+});
 
 
 app.get('/Employees', function(req, res) {
@@ -82,7 +77,6 @@ app.get('/Customer-details', function(req, res) {
         });
     });
 });
-
 app.post('/Log-In', (req, res) => {
     try {
         User.findOne({
@@ -199,5 +193,48 @@ app.get('/Log-out', (req, res) => {
     req.session.destroy();
     res.redirect('/Log-in');
 });
+
+app.post("/volunteerdeat", (req, res) => {
+    
+    let voldeat = new test({
+        date: req.body.date,
+        hours: req.body.hours,
+        aboutmeet: req.body.aboutmeet
+     
+    })
+   
+                voldeat.save(function(err) {
+                    if (!err) {
+                        console.log(voldeat);
+                        return res.redirect('/volunteer-detail');
+                    }
+                });
+    });
+
+
+    app.post("/add-product", (req, res) => {
+    
+        let product = new pro({
+            pants:req.body.pants,
+            coat: req.body.coat,
+            shirt:req.body.shirt,
+            shoes:req.body.shoes,
+            chair:req.body.chair,
+            table:req.body.table
+            
+         
+        })
+       
+                    product.save(function(err) {
+                        if (!err) {
+                            console.log(product);
+                            return res.redirect('/add-product');
+                        }
+                    });
+        });
+    
+    
+    
+
 
 module.exports = app;

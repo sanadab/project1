@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Employees</title>
+    <title>volunteer-detail</title>
     <style>
         table {
             border-collapse: collapse;
@@ -38,7 +38,7 @@
         <div class="navlinks">
             <ul>
                 <li><a href="Home.html">Home</a></li>
-                <li><a href="Profile-Service1">service Profile</a></li>
+                <li><a href="profile-cos.html">Customer Profile</a></li>
             </ul>
         </div>
     </nav>
@@ -50,63 +50,41 @@
         <thead>
             <tr>
                 <th>
-                    <h1>pants</h1>
+                    <h1>Date</h1>
                 </th>
                 <th>
-                    <h1>coat</h1>
+                    <h1>Hours</h1>
                 </th>
                 <th>
-                    <h1>shirt</h1>
+                    <h1>aboutmeet</h1>
                 </th>
-                <th>
-                    <h1>shoes</h1>
-                </th>
-                <th>
-                    <h1>chair</h1>
-                </th>
-                <th>
-                    <h1>table</h1>
-                </th>
+              
 
             </tr>
         </thead>
         <tbody>
 
             <%p.forEach(user=>{ %>
-                
+               
                     <tr>
                         <td>
                             <p>
 
-                                <%= user.pants %>
+                                <%= user.date %>
                             </p>
                         </td>
                         <td>
                             <p>
-                                <%= user.coat %>
+                                <%= user.hours %>
                             </p>
                         </td>
                         <td>
                             <p>
-                                <%= user.shirt %>
+                                <%= user.aboutmeet %>
                             </p>
                         </td>
-                        <td>
-                            <p>
-                                <%= user.shoes%>
-                            </p>
-                        </td>
-                        <td>
-                            <p>
-                                <%= user.chair%>
-                            </p>
-                        </td>
-                        <td>
-                            <p>
-                                <%= user.table%>
-                            </p>
-                        </td>
-                        
+                    
+
                     </tr>
                     
                         <%})%>

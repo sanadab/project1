@@ -42,6 +42,9 @@ app.get('/profile-cos', function(req, res) {
 app.get('/Profile-Service1', function(req, res) {
     res.render('Profile-Service1.ejs');
 });
+app.get('/UpdatePassword',function(req,res){
+    res.render('UpdatePassword.html');
+});
 
 app.get('/Employees', function(req, res) {
     User.find({}, function(err, users) {
@@ -156,6 +159,57 @@ app.post("/Sign-Up", (req, res) => {
     });
 });
 
+app.post('/ForgotPW', function (req, res) {
+    var password = req.body.password;
+  
+    User.findOne({
+      id: req.body.id,
+  
+    }, function (err, user) {
+      if (err) { // user doesn't exist
+        res.json({
+          error: err
+        })
+      }
+      if (user) { //user exist
+  
+        console.log(user);
+  
+        if (req.body.id == user.id && req.body.email == user.email) {
+  
+          if (req.body.newpass === req.body.confnewpass) {
+  
+            User.updateOne({
+              id: user.id
+            }, {
+              password: req.body.newpass
+            }, function (err, reas) {
+              if (err) {
+                console.log("couldn't change password");
+              } else {
+                console.log("password changed successfully");
+                return res.redirect("/Log-In");
+              }
+            });
+  
+  
+          } else {
+            console.log("passwords doesn't match");
+          }
+  
+  
+  
+  
+        } else {
+          console.log("email and password doesn't match ");
+          return res.redirect("/ForgotPW");
+        }
+      } else {
+        console.log("user doesn't exist");
+        return res.redirect("/ForgotPW");
+      }
+    });
+  });
 app.get('/Log-out', (req, res) => {
     req.session.destroy();
     res.redirect('/Log-in');

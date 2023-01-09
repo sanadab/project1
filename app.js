@@ -18,6 +18,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 const User = require('./Database/DBs/User.js').User
+const test = require('./Database/DBs/deat-seed.js').test
 
 app.get("/", (req, res) => {
     res.render("Home.html")
@@ -35,6 +36,14 @@ app.get('/profile', function(req, res) {
     res.render('profile.ejs');
 });
 
+app.get('/profile-cos', function(req, res) {
+    res.render('profile-cos.html');
+});
+app.get('/volunteerdeat', function(req, res) {
+    res.render('volunteerdeat.html');
+});
+
+
 app.get('/Employees', function(req, res) {
     User.find({}, function(err, users) {
         res.render('Employees.ejs', {
@@ -51,6 +60,19 @@ app.get('/Customer-details', function(req, res) {
         res.render('Customer-details.ejs', {
             p: users
         });
+    });
+});
+app.get('/volunteer-detail', function(req, res) {
+    test.find({}, function(err, voldeat) {
+
+        res.render('volunteer-detail.ejs', {
+
+
+            p: voldeat
+
+        });
+
+
     });
 });
 app.post('/Log-In', (req, res) => {
@@ -150,5 +172,25 @@ app.get('/Log-out', (req, res) => {
     req.session.destroy();
     res.redirect('/Log-in');
 });
+
+app.post("/volunteerdeat", (req, res) => {
+    
+    let voldeat = new test({
+        date: req.body.date,
+        hours: req.body.hours,
+        aboutmeet: req.body.aboutmeet
+     
+    })
+   
+                voldeat.save(function(err) {
+                    if (!err) {
+                        console.log(voldeat);
+                        return res.redirect('/volunteer-detail');
+                    }
+                });
+    });
+
+
+
 
 module.exports = app;

@@ -2,6 +2,7 @@ var express = require("express")
 var bodyParser = require("body-parser")
 var mongoose = require("mongoose")
 const path = require('path');
+//const session = require('session');
 
 var passwordValidator = require('password-validator');
 const app = express();
@@ -31,9 +32,9 @@ app.get('/Log-in', function(req, res) {
     res.render('Log-in.html');
 });
 
-app.get('/profile', function(req, res) {
-    res.render('profile.ejs');
-});
+// app.get('/profile', function(req, res) {
+//     res.render('profile.ejs');
+// });
 
 app.get('/profile-cos', function(req, res) {
     res.render('profile-cos.html');
@@ -62,6 +63,13 @@ app.get('/Customer-details', function(req, res) {
     });
 });
 
+app.get('/profile', function(req, res) {
+    User.find({}, function(err, users) {
+        res.render('profile.ejs', {
+            p: users
+        });
+    });
+});
 app.post('/Log-In', (req, res) => {
     try {
         User.findOne({
@@ -157,8 +165,8 @@ app.post("/Sign-Up", (req, res) => {
 });
 
 app.get('/Log-out', (req, res) => {
-    req.session.destroy();
-    res.redirect('/Log-in');
+    console.log("logout user");
+    res.redirect('/Log-in.html');
 });
 
 module.exports = app;

@@ -37,9 +37,9 @@ app.get('/Log-in', function(req, res) {
 app.get('/profile', function(req, res) {
     res.render('profile.ejs');
 });
-app.get('/products', function(req, res) {
-    res.render('products.ejs');
-});
+// app.get('/products', function(req, res) {
+//     res.render('products.ejs');
+// });
 app.get('/Profile-Service1', function(req, res) {
     res.render('Profile-Service1.ejs');
 });
@@ -65,9 +65,9 @@ app.get('/Employees', function(req, res) {
 });
 
 app.get('/products', function(req, res) {
-    User.find({}, function(err, users) {
+    pro.find({}, function(err, product) {
         res.render('products.ejs', {
-            p: users
+            p: product
         });
     });
 });

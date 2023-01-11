@@ -21,6 +21,7 @@ app.use(bodyParser.urlencoded({
 const pro = require('./Database/DBs/products.js').pro
 const User = require('./Database/DBs/User.js').User
 const test = require('./Database/DBs/deat-seed.js').test
+const Request = require('./Database/DBs/Request-ac.js').Request
 
 
 app.get("/", (req, res) => {
@@ -50,6 +51,10 @@ app.get('/Profile-cos', function(req, res) {
 app.get('/add-product', function(req, res) {
     res.render('add-product.html');
 });
+app.get('/Request-cu', function(req, res) {
+    res.render('Request-cu.html');
+});
+
 
 
 
@@ -76,6 +81,13 @@ app.get('/Customer-details', function(req, res) {
         console.log(users);
         res.render('Customer-details.ejs', {
             p: users
+        });
+    });
+});
+app.get('/Requests-table', function(req, res) {
+    Request.find({}, function(err, Request1) {
+        res.render('Requests-table.ejs', {
+            p: Request1
         });
     });
 });
@@ -282,6 +294,22 @@ app.post("/add-product", (req, res) => {
         if (!err) {
             console.log(product);
             return res.redirect('/add-product');
+        }
+    });
+});
+
+app.post("/Request-cu", (req, res) => {
+
+    let Request1 = new Request({
+      Name:req.body.Name,
+      Email:req.body.Email,
+      request:req.body.request
+    })
+
+    Request1.save(function(err) {
+        if (!err) {
+            console.log(Request1);
+            return res.redirect('/Request-cu');
         }
     });
 });

@@ -58,6 +58,8 @@ app.get('/Request-cu', function(req, res) {
 
 
 
+
+
 app.get('/Employees', function(req, res) {
     User.find({}, function(err, users) {
         res.render('Employees.ejs', {
@@ -81,6 +83,14 @@ app.get('/Customer-details', function(req, res) {
         console.log(users);
         res.render('Customer-details.ejs', {
             p: users
+        });
+    });
+});
+app.get('/Customer-details-sr', function(req, res) {
+    User.find({}, function(err, users) {
+
+        res.render('Customer-details-sr.ejs', {
+            r: users
         });
     });
 });
@@ -301,9 +311,9 @@ app.post("/add-product", (req, res) => {
 app.post("/Request-cu", (req, res) => {
 
     let Request1 = new Request({
-      Name:req.body.Name,
-      Email:req.body.Email,
-      request:req.body.request
+        Name: req.body.Name,
+        Email: req.body.Email,
+        request: req.body.request
     })
 
     Request1.save(function(err) {

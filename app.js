@@ -22,6 +22,7 @@ const pro = require('./Database/DBs/products.js').pro
 const User = require('./Database/DBs/User.js').User
 const test = require('./Database/DBs/deat-seed.js').test
 const Request = require('./Database/DBs/Request-ac.js').Request
+const volreq = require('./Database/DBs/volreq.js').volreq
 
 
 app.get("/", (req, res) => {
@@ -54,8 +55,27 @@ app.get('/add-product', function(req, res) {
 app.get('/Request-cu', function(req, res) {
     res.render('Request-cu.html');
 });
+app.get('/volunteerdeat', function(req, res) {
+    res.render('volunteerdeat.html');
+});
+app.get('/volunteerreq',function(req,res){
+    res.render('volunteerreq.html');
+
+});
+
+app.get('/volunteer-detail', function(req, res) {
+    test.find({}, function(err, voldeat) {
+
+        res.render('volunteer-detail.ejs', {
 
 
+            p: voldeat
+
+        });
+
+
+    });
+});
 
 
 
@@ -323,6 +343,25 @@ app.post("/Request-cu", (req, res) => {
         }
     });
 });
+app.post("/volunteerreq", (req, res) => {
+
+    let reqs = new volreq({
+        Name: req.body.Name,
+        Email: req.body.Email,
+        Phone: req.body.Phone,
+        aboutme:req.body.aboutme,
+        volunteer:req.body.volunteer
+    })
+
+    reqs.save(function(err) {
+        if (!err) {
+            console.log(reqs);
+            return res.redirect('/volunteerreq');
+        }
+    });
+});
+
+
 
 
 

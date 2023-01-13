@@ -25,6 +25,7 @@ const Request = require('./Database/DBs/Request-ac.js').Request
 const volreq = require('./Database/DBs/volreq.js').volreq
 const sclreq = require('./Database/DBs/sclreq.js').sclreq
 const requestt = require('./Database/DBs/request2.js').requestt
+const requestt3 = require('./Database/DBs/Request.js').requestt3
 
 
 app.get("/", (req, res) => {
@@ -70,6 +71,10 @@ app.get('/requestapli',function(req,res){
 });
 app.get('/Customer-Donation-Request',function(req,res){
     res.render('Customer-Donation-Request.html');
+
+});
+app.get('/Admin-Assistance-Approval',function(req,res){
+    res.render('Admin-Assistance-Approval.html');
 
 });
 
@@ -430,6 +435,23 @@ app.post("/Customer-Donation-Request", (req, res) => {
         if (!err) {
             console.log(request2);
             return res.redirect('/Customer-Donation-Request');
+        }
+    });
+});
+     
+    
+app.post("/Admin-Assistance-Approval", (req, res) => {
+
+    let request3 = new requestt3({
+        Name: req.body.Name,
+        Email: req.body.Email,
+        request: req.body.request
+    })
+
+    request3.save(function(err) {
+        if (!err) {
+            console.log(request3);
+            return res.redirect('/Admin-Assistance-Approval');
         }
     });
 });

@@ -23,6 +23,7 @@ const User = require('./Database/DBs/User.js').User
 const test = require('./Database/DBs/deat-seed.js').test
 const Request = require('./Database/DBs/Request-ac.js').Request
 const volreq = require('./Database/DBs/volreq.js').volreq
+const sclreq = require('./Database/DBs/sclreq.js').sclreq
 
 
 app.get("/", (req, res) => {
@@ -60,6 +61,10 @@ app.get('/volunteerdeat', function(req, res) {
 });
 app.get('/volunteerreq',function(req,res){
     res.render('volunteerreq.html');
+
+});
+app.get('/requestapli',function(req,res){
+    res.render('requestapli.html');
 
 });
 
@@ -357,6 +362,26 @@ app.post("/volunteerreq", (req, res) => {
         if (!err) {
             console.log(reqs);
             return res.redirect('/volunteerreq');
+        }
+    });
+});
+app.post("/requestapli", (req, res) => {
+
+    let sclreq1 = new sclreq({
+        Name: req.body.Name,
+        Email: req.body.Email,
+        Phone: req.body.Phone,
+        Studyat: req.body.Studyat,
+        Yearofstud:req.body.Yearofstud,
+        aboutme:req.body.aboutme
+
+        
+    })
+
+    sclreq1.save(function(err) {
+        if (!err) {
+            console.log(sclreq1);
+            return res.redirect('/requestapli');
         }
     });
 });

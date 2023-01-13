@@ -43,33 +43,47 @@
     </head>>
 
     <body>
-            <center>
-                   <div class="w3-container" id="contact" style="margin-top:75px">
-                   <h1 class="w3-xxxlarge w3-text-red"><b>scholarship request.</b></h1>
-                   <hr style="width:50px;border:5px solid blue" class="w3-round">
-    
-                <form >
-                    <div class="w3-section">
-                        <label>Name</label>
-                        <input>
-                    </div>
-                    <div class="w3-section">
-                        <label>Email</label>
-                        <input >
-                    </div>
-                    <div class="w3-section">
-                        <label>About me </label>
-                        <input>
-                    </div>
-                    <button >Send
-                        request</button>
-                </form>
-                   </div>
-                    
-            </center>        
-    
+        <center>
+        <div class="w3-container" id="contact" style="margin-top:75px">
+            <h1 class="w3-xxxlarge w3-text-red"><b>scholarship request</b></h1>
+            <hr style="width:50px;border:5px solid blue" class="w3-round">
+
+         
+           <form action="/requestapli" method="POST">
+               <input name="Name" type="text" placeholder="Name"/>
+                 
+             </div>
+             <div class="w3-section">
+               <input name="Email" type="text" placeholder="Email"/>
+                 
+             </div>
+             <div class="w3-section">
+                <input name="Phone" type="tel" placeholder="Phone" maxlength="10" />
+                
+             </div>
+             <div class="w3-section">
+              
+                 <input name="Studyat" type="text" placeholder="study at"/>
+                  
+               </div>
+               <div class="w3-section">
+              
+                <input name="Yearofstud" type="number" placeholder="years of studies"/>
+                 
+              </div>
+               <div class="w3-section">
+              
+                <input name="aboutme" type="text" placeholder="aboutme"/>
+                 
+              </div>
+             <button type="submit">send request</button>
+         </form>
+
+            </div>
+        </center>
+
            
-        </div>
+        
     </body>
 
 

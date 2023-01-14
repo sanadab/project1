@@ -28,7 +28,7 @@ const Request = require('./Database/DBs/Request-ac.js').Request
 const volreq = require('./Database/DBs/volreq.js').volreq
 const sclreq = require('./Database/DBs/sclreq.js').sclreq
 const requestt = require('./Database/DBs/request2.js').requestt
-const requestt5 = require('./Database/DBs/request5.js').requestt5
+
 
 
 
@@ -86,10 +86,7 @@ app.get('/Customer-Donation-Request', function(req, res) {
     res.render('Customer-Donation-Request.html');
 
 });
-app.get('/request-scholarship', function(req, res) {
-    res.render('request-scholarship.html');
 
-});
 
 
 
@@ -322,7 +319,6 @@ app.post('/ForgotPW', function(req, res) {
         }
     });
 });
-
 app.get('/Log-out', (req, res) => {
     console.log("logout user");
     res.redirect('/Log-in.html');
@@ -554,25 +550,7 @@ app.post('/Delete', async(req, res) => {
     });
 });
  */
-app.post("/request-scholarship", (req, res) => {
 
-    let request5 = new requestt5({
-        Name: req.body.Name,
-        Email: req.body.Email,
-        age: req.body.age,
-        request: req.body.request
-    })
-
-    request5.save(function(err) {
-
-        if (!err) {
-
-            console.log(request5);
-
-            return res.redirect('/request-scholarship');
-        }
-    });
-});
 
 
 module.exports = app;

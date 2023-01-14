@@ -138,3 +138,51 @@ describe('Check if the routes goes to requestpli Page', function() {
     });
 
 });
+//16
+describe('Check if the routes goes to Customer details  Page', function() {
+    test('responds to /Customer-details-sr', async() => {
+        const res = await request(app).get('/Customer-details-sr.ejs');
+        expect(res.should.have.status(200));
+    });
+
+});
+//17
+describe('Check if the routes goes to voluntreedeat Page', function() {
+    test('responds to /voluntreedeat', async() => {
+        const res = await request(app).get('/voluntreedeat.html');
+        expect(res.should.have.status(200));
+    });
+
+});
+//18
+describe('Check if the routes goes to Log out Page', function() {
+    test('responds to /Log-out', async() => {
+        const res = await request(app).get('/Log-out.html');
+        expect(res.should.have.status(200));
+    });
+
+});
+//19
+describe('Check if the routes goes to Scholarship-Approval for Volunteers Page', function() {
+    test('responds to /Scholarship-Approval-for-Volunteers', async() => {
+        const res = await request(app).get('/Scholarship-Approval-for-Volunteers.ejs');
+        expect(res.should.have.status(200));
+    });
+
+});
+//20
+describe('Check if the routes goes to Admin-AssistanceApproval Page', function() {
+    test('responds to /Admin-Assistance-Approval', async() => {
+        const res = await request(app).get('/Admin-Assistance-Approval.ejsl');
+        expect(res.should.have.status(200));
+    });
+
+});
+//21
+describe('Check if the routes goes to requestpli Page', function() {
+    test('responds to /requestapli', async() => {
+        const res = await request(app).get('/requestapli.html');
+        expect(res.should.have.status(200));
+    });
+
+});

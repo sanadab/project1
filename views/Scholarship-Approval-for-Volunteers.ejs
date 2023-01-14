@@ -4,23 +4,23 @@
 
 <head>
 
-    <title>Customer Request</title>
+    <title>Request</title>
     <style>
         table {
             border-collapse: collapse;
             width: 100%;
         }
-
+        
         th,
         td {
             text-align: left;
             padding: 8px;
         }
-
+        
         tr:nth-child(even) {
             background-color: #f2f2f2
         }
-
+        
         th {
             background-color: rgb(97, 180, 8);
             color: white;
@@ -40,7 +40,7 @@
         <div class="navlinks">
             <ul>
                 <li><a href="Home.html">Home</a></li>
-                <li><a href="profile-cos.html">Customer Profile</a></li>
+                <li><a href="profile">Admin Profile</a></li>
             </ul>
         </div>
     </nav>
@@ -70,13 +70,13 @@
                     <h1>about me</h1>
                 </th>
                 <th>
-                   <h1></h1>
+                    <h1></h1>
 
                 </th>
                 <th>
                     <h1></h1>
                 </th>
-              
+
 
             </tr>
         </thead>
@@ -118,23 +118,23 @@
                                 <%= user.aboutme %>
                             </p>
                         </td>
-                      
-                    <td>
-                        <p>
-                            <button>accept</button>
-                        </p>
+
+                        <td>
+                            <p>
+                                <button>accept</button>
+                            </p>
                         </td>
 
-                    <td>
-                        <p>
-                            <form action="/Delete1" method="POST" class="form-container">
-                                 <button type="submit" name="name" value=<%= user.id %> class="btn confirm">Delete </button>
-                               </form>
-                          
-                        </p>
-                    </td>
+                        <td>
+                            <p>
+                                <form action="/Delete1" method="POST" class="form-container">
+                                    <button type="submit" name="name" value=<%=user.id %> class="btn confirm">Delete </button>
+                                </form>
 
-                    </p>
+                            </p>
+                        </td>
+
+                        </p>
                     </td>
 
 
@@ -147,8 +147,7 @@
         </form>
     </table>
     <script>
-        function deleteUser(Name)
-        {
+        function deleteUser(Name) {
             console.log(Name);
         }
     </script>

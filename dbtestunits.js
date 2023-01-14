@@ -132,8 +132,8 @@ describe('Check if the routes goes to products Page', function() {
 });
 //15
 describe('Check if the routes goes to requestpli Page', function() {
-    test('responds to /requestpli', async() => {
-        const res = await request(app).get('/requestpli.html');
+    test('responds to /requestapli', async() => {
+        const res = await request(app).get('/requestapli.html');
         expect(res.should.have.status(200));
     });
 

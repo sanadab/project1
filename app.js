@@ -2,6 +2,8 @@ var express = require("express")
 var bodyParser = require("body-parser")
 var mongoose = require("mongoose")
 const path = require('path');
+var router = express.Router();
+
 //const session = require('session');
 
 var passwordValidator = require('password-validator');
@@ -11,6 +13,7 @@ const app = express();
 const ejs = require("ejs");
 var engines = require('consolidate');
 const { send } = require("process");
+const { requestt3 } = require("./Database/DBs/Request.js");
 app.set('view engine', 'ejs');
 app.use(express.static('views'));
 app.set('views', __dirname + '/views');
@@ -25,7 +28,7 @@ const Request = require('./Database/DBs/Request-ac.js').Request
 const volreq = require('./Database/DBs/volreq.js').volreq
 const sclreq = require('./Database/DBs/sclreq.js').sclreq
 const requestt = require('./Database/DBs/request2.js').requestt
-const requestt3 = require('./Database/DBs/Request.js').requestt3
+
 
 
 app.get("/", (req, res) => {
@@ -73,10 +76,7 @@ app.get('/Customer-Donation-Request',function(req,res){
     res.render('Customer-Donation-Request.html');
 
 });
-app.get('/Admin-Assistance-Approval',function(req,res){
-    res.render('Admin-Assistance-Approval.html');
 
-});
 
 
 app.get('/volunteer-detail', function(req, res) {
@@ -133,6 +133,13 @@ app.get('/Customer-details-sr', function(req, res) {
 app.get('/Requests-table', function(req, res) {
     Request.find({}, function(err, Request1) {
         res.render('Requests-table.ejs', {
+            p: Request1
+        });
+    });
+});
+app.get('/Admin-Assistance-Approval', function(req, res) {
+    Request.find({}, function(err, Request1) {
+        res.render('Admin-Assistance-Approval.ejs', {
             p: Request1
         });
     });
@@ -343,6 +350,27 @@ app.post("/add-product", (req, res) => {
         }
     });
 });
+// app.post("/Admin-Assistance-Approval", (req, res) => {
+
+//     // let product = new pro({
+//     //     pants: req.body.pants,
+//     //     coat: req.body.coat,
+//     //     shirt: req.body.shirt,
+//     //     shoes: req.body.shoes,
+//     //     chair: req.body.chair,
+//     //     table: req.body.table
+//     console.log("asd");
+
+//     // })
+
+//     test.Request1.remove(function(err) {
+//         if (!err) {
+//             console.log(product);
+//             return res.redirect('/Home');
+//         }
+//     });
+// });
+
 
 app.post("/Request-cu", (req, res) => {
 
@@ -439,22 +467,58 @@ app.post("/Customer-Donation-Request", (req, res) => {
     });
 });
      
-    
-app.post("/Admin-Assistance-Approval", (req, res) => {
+// app.get('/views/delete/:id',function(req,res){
+//     mongoose.model("request1").remove({_id:req.body.id},function(err,delData){
+//         res.redirect("/views/Admin-Assistance-Approval")
+//     })
+//     res.send(req.body.id);
+// })
 
-    let request3 = new requestt3({
-        Name: req.body.Name,
-        Email: req.body.Email,
-        request: req.body.request
-    })
+// app.delete('/views/delete/:id', function (req, res) {
+//     User.findByIdAndRemove(req.body.id, function (err, user) {
+//         if (err) return res.status(500).send("There was a problem deleting the user.");
+//       res.status(200).send("User "+ user.name +" was deleted.");
+//     });
+//   });
 
-    request3.save(function(err) {
-        if (!err) {
-            console.log(request3);
-            return res.redirect('/Admin-Assistance-Approval');
+app.post('/Delete', async (req, res) => {
+  //console.log(req.body);
+    var a=req.body.id;
+    console.log(a);
+    await Request.deleteOne({id: req.body.id});
+    return res.redirect('/profile');
+
+
+    /*try {
+        
+  
+      console.log("delete userr ");
+      Request-ac.deleteOne({
+        Name: req.body.Name
+      }, function (err, successfully) {
+        if (err) {
+          console.log("function failed");
+        } else {
+          console.log("function success");
         }
+  
+      });
+      return res.redirect("/Admin-Assistance-Approval");
+    } catch {
+  
+      return res.redirect("/Admin-Assistance-Approval");
+  
+    }*/
+  });
+
+/*
+  app.post('/Delete', function(req, res) {
+    Request.find({}, function(err, Request1) {
+        res.render('Admin-Assistance-Approval.ejs', {
+            p: Request1
+        });
     });
 });
-
-
+ */
+  
 module.exports = app;

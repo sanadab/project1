@@ -148,8 +148,8 @@ describe('Check if the routes goes to Customer details  Page', function() {
 });
 //17
 describe('Check if the routes goes to voluntreedeat Page', function() {
-    test('responds to /voluntreedeat', async() => {
-        const res = await request(app).get('/voluntreedeat.html');
+    test('responds to /volunteerdeat', async() => {
+        const res = await request(app).get('/volunteerdeat.html');
         expect(res.should.have.status(200));
     });
 
@@ -173,7 +173,7 @@ describe('Check if the routes goes to Scholarship-Approval for Volunteers Page',
 //20
 describe('Check if the routes goes to Admin Assistance Approval Page', function() {
     test('responds to /Admin-Assistance-Approval', async() => {
-        const res = await request(app).get('/Admin-Assistance-Approval.ejsl');
+        const res = await request(app).get('/Admin-Assistance-Approval.ejs');
         expect(res.should.have.status(200));
     });
 

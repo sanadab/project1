@@ -58,3 +58,43 @@ describe('Check if the routes goes to customer profile Page', function() {
     });
 
 });
+//6
+describe('Check if the routes goes to volunteerreq Page', function() {
+    test('responds to /volunteerreq', async() => {
+        const res = await request(app).get('/volunteerreq.html');
+        expect(res.should.have.status(200));
+    });
+
+});
+//7
+describe('Check if the routes goes to customer donation request page', function() {
+    test('responds to //Customer-Donation-Request', async() => {
+        const res = await request(app).get('/Customer-Donation-Request.html');
+        expect(res.should.have.status(200));
+    });
+
+});
+//8
+describe('Check if the routes goes to volunteerdetail page', function() {
+    test('responds to /volunteer-detail', async() => {
+        const res = await request(app).get('/volunteer-detail.ejs');
+        expect(res.should.have.status(200));
+    });
+
+});
+//9
+describe('Check if the routes goes to Employees page', function() {
+    test('responds to /Employees', async() => {
+        const res = await request(app).get('/Employees.ejs');
+        expect(res.should.have.status(200));
+    });
+
+});
+//10
+describe('Check if the routes goes to add product Page', function() {
+    test('responds to /add-product', async() => {
+        const res = await request(app).get('/add-product.html');
+        expect(res.should.have.status(200));
+    });
+
+});

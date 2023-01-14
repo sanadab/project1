@@ -98,3 +98,43 @@ describe('Check if the routes goes to add product Page', function() {
     });
 
 });
+//11
+describe('Check if the routes goes to signup-service Page', function() {
+    test('responds to /Sign-Up-Service', async() => {
+        const res = await request(app).get('/Sign-Up-Service.html');
+        expect(res.should.have.status(200));
+    });
+
+});
+//12
+describe('Check if the routes goes to profile service Page', function() {
+    test('responds to /Profile-Service1', async() => {
+        const res = await request(app).get('/Profile-Service1.ejs');
+        expect(res.should.have.status(200));
+    });
+
+});
+//13
+describe('Check if the routes goes to Request-cu Page', function() {
+    test('responds to /Request-cu', async() => {
+        const res = await request(app).get('/Request-cu.html');
+        expect(res.should.have.status(200));
+    });
+
+});
+//14
+describe('Check if the routes goes to products Page', function() {
+    test('responds to /products', async() => {
+        const res = await request(app).get('/products.ejs');
+        expect(res.should.have.status(200));
+    });
+
+});
+//15
+describe('Check if the routes goes to requestpli Page', function() {
+    test('responds to /requestpli', async() => {
+        const res = await request(app).get('/requestpli.html');
+        expect(res.should.have.status(200));
+    });
+
+});

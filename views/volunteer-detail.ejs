@@ -20,8 +20,11 @@
         }
         
         th {
-            background-color: rgb(97, 180, 8);
+            background-color: rgb(235, 85, 85);
             color: white;
+        }
+        p{
+            font-style:inherit;
         }
     </style>
     <link rel="icon" href="images/favicon.ico">
@@ -40,7 +43,9 @@
                 <li><a href="Home.html">Home</a></li>
                 <li><a href="profile-cos.html">Customer Profile</a></li>
             </ul>
+
         </div>
+
     </nav>
 
 
@@ -61,7 +66,9 @@
               
 
             </tr>
+
         </thead>
+
         <tbody>
 
             <%p.forEach(user=>{ %>
@@ -73,11 +80,13 @@
                                 <%= user.date %>
                             </p>
                         </td>
+                        
                         <td>
                             <p>
                                 <%= user.hours %>
                             </p>
                         </td>
+
                         <td>
                             <p>
                                 <%= user.aboutmeet %>
@@ -90,7 +99,9 @@
                         <%})%>
 
         </tbody>
+
     </table>
+
 </body>
 
 </html>

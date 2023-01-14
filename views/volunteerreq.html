@@ -23,8 +23,28 @@
             font-family: "Poppins", sans-serif
         }
         
+        input{
+            width: 60%;
+            column-count: inherit;
+            
+
+        }
+        button{
+            background-color: red;
+            color: black;
+            padding: 12px;
+            display: inline-block;
+
+
+        }
+
+        
+        
         body {
-            font-size: 16px;
+            font-size: 20px;
+            font-style:oblique;
+        
+            
         }
         
         .w3-half img {
@@ -44,6 +64,8 @@
     </head>>
 
     <body>
+        
+
         <center>
             <div class="w3-container" id="contact" style="margin-top:75px">
             <h1 class="w3-xxxlarge w3-text-red"><b>volunteer request</b></h1>
@@ -51,6 +73,7 @@
 
          
            <form action="/volunteerreq" method="POST">
+             <div>
                <input name="Name" type="text" placeholder="Name"/>
                  
              </div>
@@ -60,7 +83,7 @@
              </div>
              <div class="w3-section">
               
-               <input name="Phone" type="text" placeholder="Phone"/>
+               <input name="Phone" type="tel" placeholder="Phone"/>
                 
              </div>
              <div class="w3-section">
@@ -82,8 +105,20 @@
 
   
            
-        </div>
+       
+    </div>
+
     </body>
 
+ </html>
 
-</html>
+
+
+
+
+
+
+
+
+
+

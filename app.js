@@ -35,6 +35,7 @@ app.get("/", (req, res) => {
 app.get('/Sign-Up', function(req, res) {
     res.render('Sign-Up.html');
 });
+
 app.get('/Sign-Up-Service', function(req, res) {
     res.render('Sign-Up-Service.html');
 });
@@ -46,25 +47,32 @@ app.get('/Log-in', function(req, res) {
 app.get('/profile', function(req, res) {
     res.render('profile.ejs');
 });
+
 app.get('/Profile-Service1', function(req, res) {
     res.render('Profile-Service1.ejs');
 });
+
 app.get('/Profile-cos', function(req, res) {
     res.render('Profile-cos.html');
 });
+
 app.get('/add-product', function(req, res) {
     res.render('add-product.html');
 });
+
 app.get('/Request-cu', function(req, res) {
     res.render('Request-cu.html');
 });
+
 app.get('/volunteerdeat', function(req, res) {
     res.render('volunteerdeat.html');
 });
+
 app.get('/volunteerreq',function(req,res){
     res.render('volunteerreq.html');
 
 });
+
 app.get('/requestapli',function(req,res){
     res.render('requestapli.html');
 
@@ -122,6 +130,7 @@ app.get('/Customer-details', function(req, res) {
         });
     });
 });
+
 app.get('/Customer-details-sr', function(req, res) {
     User.find({}, function(err, users) {
 
@@ -300,6 +309,7 @@ app.post('/ForgotPW', function(req, res) {
         }
     });
 });
+
 app.get('/Log-out', (req, res) => {
     console.log("logout user");
     res.redirect('/Log-in.html');
@@ -315,8 +325,11 @@ app.post("/volunteerdeat", (req, res) => {
     })
 
     voldeat.save(function(err) {
+
         if (!err) {
+
             console.log(voldeat);
+
             return res.redirect('/volunteer-detail');
         }
     });
@@ -353,8 +366,11 @@ app.post("/Request-cu", (req, res) => {
     })
 
     Request1.save(function(err) {
+
         if (!err) {
+
             console.log(Request1);
+
             return res.redirect('/Request-cu');
         }
     });
@@ -370,8 +386,11 @@ app.post("/volunteerreq", (req, res) => {
     })
 
     reqs.save(function(err) {
+
         if (!err) {
+
             console.log(reqs);
+
             return res.redirect('/volunteerreq');
         }
     });
@@ -390,8 +409,11 @@ app.post("/requestapli", (req, res) => {
     })
 
     sclreq1.save(function(err) {
+
         if (!err) {
+
             console.log(sclreq1);
+
             return res.redirect('/requestapli');
         }
     });
@@ -415,8 +437,11 @@ app.post("/requestapli", (req, res) => {
         })
        
                     product.save(function(err) {
+
                         if (!err) {
+
                             console.log(product);
+
                             return res.redirect('/add-product');
                         }
                     });
@@ -432,8 +457,11 @@ app.post("/Customer-Donation-Request", (req, res) => {
     })
 
     request2.save(function(err) {
+
         if (!err) {
+
             console.log(request2);
+
             return res.redirect('/Customer-Donation-Request');
         }
     });
@@ -458,3 +486,57 @@ app.post("/Admin-Assistance-Approval", (req, res) => {
 
 
 module.exports = app;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

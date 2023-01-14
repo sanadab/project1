@@ -84,7 +84,10 @@ app.get('/Customer-Donation-Request',function(req,res){
     res.render('Customer-Donation-Request.html');
 
 });
+// app.get('/Scholarship-Approval-for-Volunteers',function(req,res){
+//     res.render('Scholarship-Approval-for-Volunteers.ejs');
 
+// });
 
 
 app.get('/volunteer-detail', function(req, res) {
@@ -152,6 +155,15 @@ app.get('/Admin-Assistance-Approval', function(req, res) {
             p: Request1
         });
     });
+    
+});
+app.get('/Scholarship-Approval-for-Volunteers', function(req, res) {
+    sclreq.find({}, function(err, sclreq1) {
+        res.render('Scholarship-Approval-for-Volunteers.ejs', {
+            p: sclreq1
+        });
+    });
+    
 });
 app.post('/Log-In', (req, res) => {
     try {
@@ -515,30 +527,7 @@ app.post('/Delete', async (req, res) => {
     console.log(a);
     await Request.deleteOne({id: req.body.id});
     return res.redirect('/profile');
-
-
-    /*try {
-        
-  
-      console.log("delete userr ");
-      Request-ac.deleteOne({
-        Name: req.body.Name
-      }, function (err, successfully) {
-        if (err) {
-          console.log("function failed");
-        } else {
-          console.log("function success");
-        }
-  
-      });
-      return res.redirect("/Admin-Assistance-Approval");
-    } catch {
-  
-      return res.redirect("/Admin-Assistance-Approval");
-  
-    }*/
   });
-
 /*
   app.post('/Delete', function(req, res) {
     Request.find({}, function(err, Request1) {
@@ -548,7 +537,22 @@ app.post('/Delete', async (req, res) => {
     });
 });
  */
-  
+app.post('/Delete1', async (req, res) => {
+    //console.log(req.body);
+      var a=req.body.id;
+    //   console.log(a);
+      await sclreq.deleteOne({id: req.body.id});
+      return res.redirect('/profile');
+    });
+
+
+app.post('/Block', async (req, res) => {
+    //console.log(req.body);
+      var a=req.body.id;
+       console.log(a);
+      await User.deleteOne({id: req.body.id});
+      return res.redirect('/profile');
+    });
 module.exports = app;
 
 

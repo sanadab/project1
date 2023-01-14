@@ -26,6 +26,9 @@
         body {
             font-size: 16px;
         }
+        input{
+            width: 40%;
+        }
         
         .w3-half img {
             margin-bottom: -6px;
@@ -36,6 +39,10 @@
         
         .w3-half img:hover {
             opacity: 1
+        }
+        button{
+            background-color: red;
+            color: black;
         }
        
 
@@ -49,9 +56,11 @@
                    <h1 class="w3-xxxlarge w3-text-red"><b>Add meeting</b></h1>
                    <hr style="width:50px;border:5px solid blue" class="w3-round">
     
-                
+                <br>
                   <form action="/volunteerdeat" method="POST">
+                    <div>
                       <input name="date" type="date" placeholder="date"/>
+
                         
                     </div>
                     <div class="w3-section">

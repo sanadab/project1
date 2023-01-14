@@ -13,6 +13,7 @@
     <script defer src="https://use.fontawesome.com/releases/v6.2.1/js/all.js"></script>
 
     <style>
+        
         body,
         h1,
         h2,
@@ -21,15 +22,36 @@
         h5 {
             font-family: "Poppins", sans-serif
         }
+        input{
+            width: 60%;
+            column-count: inherit;
+            
+
+        }
+        button{
+            background-color: red;
+            color: black;
+            padding: 12px;
+            display: inline-block;
+
+        }
+         
+
+       
+
+        
         
         body {
-            font-size: 16px;
+            font-size: 20px;
+            font-style:oblique;
+        
+            
         }
         
         .w3-half img {
-            margin-bottom: -6px;
-            margin-top: 16px;
-            opacity: 0.8;
+            margin-bottom: 6px;
+            margin-top: 100px;
+            opacity: 1.2;
             cursor: pointer
         }
         
@@ -43,13 +65,17 @@
     </head>>
 
     <body>
+
         <center>
-        <div class="w3-container" id="contact" style="margin-top:75px">
+          <div class="w3-container" id="contact" style="margin-top:75px">
             <h1 class="w3-xxxlarge w3-text-red"><b>scholarship request</b></h1>
-            <hr style="width:50px;border:5px solid blue" class="w3-round">
+            <hr style="width:50px;border:5px solid rgb(98, 98, 192)" class="w3-round">
+          </div>
 
          
            <form action="/requestapli" method="POST">
+             <div>
+
                <input name="Name" type="text" placeholder="Name"/>
                  
              </div>
@@ -57,20 +83,24 @@
                <input name="Email" type="text" placeholder="Email"/>
                  
              </div>
+
              <div class="w3-section">
                 <input name="Phone" type="tel" placeholder="Phone" maxlength="10" />
                 
              </div>
+
              <div class="w3-section">
               
                  <input name="Studyat" type="text" placeholder="study at"/>
                   
                </div>
+
                <div class="w3-section">
               
                 <input name="Yearofstud" type="number" placeholder="years of studies"/>
                  
               </div>
+
                <div class="w3-section">
               
                 <input name="aboutme" type="text" placeholder="aboutme"/>
@@ -80,7 +110,7 @@
          </form>
 
             </div>
-        </center>
+        <center>
 
            
         

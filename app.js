@@ -31,6 +31,8 @@ const requestt = require('./Database/DBs/request2.js').requestt
 
 
 
+
+
 app.get("/", (req, res) => {
     res.render("Home.html")
 
@@ -71,16 +73,16 @@ app.get('/volunteerdeat', function(req, res) {
     res.render('volunteerdeat.html');
 });
 
-app.get('/volunteerreq',function(req,res){
+app.get('/volunteerreq', function(req, res) {
     res.render('volunteerreq.html');
 
 });
 
-app.get('/requestapli',function(req,res){
+app.get('/requestapli', function(req, res) {
     res.render('requestapli.html');
 
 });
-app.get('/Customer-Donation-Request',function(req,res){
+app.get('/Customer-Donation-Request', function(req, res) {
     res.render('Customer-Donation-Request.html');
 
 });
@@ -88,6 +90,7 @@ app.get('/Customer-Donation-Request',function(req,res){
 //     res.render('Scholarship-Approval-for-Volunteers.ejs');
 
 // });
+
 
 
 app.get('/volunteer-detail', function(req, res) {
@@ -328,7 +331,6 @@ app.post('/ForgotPW', function(req, res) {
         }
     });
 });
-
 app.get('/Log-out', (req, res) => {
     console.log("logout user");
     res.redirect('/Log-in.html');
@@ -421,8 +423,8 @@ app.post("/volunteerreq", (req, res) => {
         Name: req.body.Name,
         Email: req.body.Email,
         Phone: req.body.Phone,
-        aboutme:req.body.aboutme,
-        volunteer:req.body.volunteer
+        aboutme: req.body.aboutme,
+        volunteer: req.body.volunteer
     })
 
     reqs.save(function(err) {
@@ -442,10 +444,10 @@ app.post("/requestapli", (req, res) => {
         Email: req.body.Email,
         Phone: req.body.Phone,
         Studyat: req.body.Studyat,
-        Yearofstud:req.body.Yearofstud,
-        aboutme:req.body.aboutme
+        Yearofstud: req.body.Yearofstud,
+        aboutme: req.body.aboutme
 
-        
+
     })
 
     sclreq1.save(function(err) {
@@ -463,31 +465,31 @@ app.post("/requestapli", (req, res) => {
 
 
 
-    app.post("/add-product", (req, res) => {
-    
-        let product = new pro({
-            pants:req.body.pants,
-            coat: req.body.coat,
-            shirt:req.body.shirt,
-            shoes:req.body.shoes,
-            chair:req.body.chair,
-            table:req.body.table
-            
-         
-        })
-       
-                    product.save(function(err) {
+app.post("/add-product", (req, res) => {
 
-                        if (!err) {
+    let product = new pro({
+        pants: req.body.pants,
+        coat: req.body.coat,
+        shirt: req.body.shirt,
+        shoes: req.body.shoes,
+        chair: req.body.chair,
+        table: req.body.table
 
-                            console.log(product);
 
-                            return res.redirect('/add-product');
-                        }
-                    });
-        });
-       
-    
+    })
+
+    product.save(function(err) {
+
+        if (!err) {
+
+            console.log(product);
+
+            return res.redirect('/add-product');
+        }
+    });
+});
+
+
 app.post("/Customer-Donation-Request", (req, res) => {
 
     let request2 = new requestt({
@@ -506,7 +508,7 @@ app.post("/Customer-Donation-Request", (req, res) => {
         }
     });
 });
-     
+
 // app.get('/views/delete/:id',function(req,res){
 //     mongoose.model("request1").remove({_id:req.body.id},function(err,delData){
 //         res.redirect("/views/Admin-Assistance-Approval")
@@ -521,11 +523,11 @@ app.post("/Customer-Donation-Request", (req, res) => {
 //     });
 //   });
 
-app.post('/Delete', async (req, res) => {
-  //console.log(req.body);
-    var a=req.body.id;
+app.post('/Delete', async(req, res) => {
+    //console.log(req.body);
+    var a = req.body.id;
     console.log(a);
-    await Request.deleteOne({id: req.body.id});
+    await Request.deleteOne({ id: req.body.id });
     return res.redirect('/profile');
   });
 /*
@@ -608,3 +610,4 @@ module.exports = app;
 
 
 
+module.exports = app;

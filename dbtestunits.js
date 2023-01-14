@@ -171,7 +171,7 @@ describe('Check if the routes goes to Scholarship-Approval for Volunteers Page',
 
 });
 //20
-describe('Check if the routes goes to Admin-AssistanceApproval Page', function() {
+describe('Check if the routes goes to Admin Assistance Approval Page', function() {
     test('responds to /Admin-Assistance-Approval', async() => {
         const res = await request(app).get('/Admin-Assistance-Approval.ejsl');
         expect(res.should.have.status(200));
@@ -179,9 +179,9 @@ describe('Check if the routes goes to Admin-AssistanceApproval Page', function()
 
 });
 //21
-describe('Check if the routes goes to requestpli Page', function() {
-    test('responds to /requestapli', async() => {
-        const res = await request(app).get('/requestapli.html');
+describe('Check if the routes goes to Requests table Page', function() {
+    test('responds to /Requests-table', async() => {
+        const res = await request(app).get('/Requests-table.ejs');
         expect(res.should.have.status(200));
     });
 
